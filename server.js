@@ -10,11 +10,10 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 var runServer = function(callback) {
-  mongoose.connect(config.DATABASE_URL, function(err) {
-    callback(config.DATABASE_URL);
-    if (err && callback) {
-      return callback(err);
-    }
+    mongoose.connect(config.DATABASE_URL, function(err) {
+        if (err && callback) {
+            return callback(err);
+        }
 
     app.listen(config.PORT, function() {
       console.log('Listening on localhost:' + config.PORT);

@@ -13,7 +13,10 @@ chai.use(chaiHttp);
 
 describe('Shopping List', function() {
   before(function(done) {
-    server.runServer(function() {
+    server.runServer(function(error) {
+      if (error) {
+        done(error);
+      }
       Item.create({
         name: 'Broad beans'
       }, {

@@ -11,6 +11,7 @@ app.use(express.static('public'));
 
 var runServer = function(callback) {
   mongoose.connect(config.DATABASE_URL, function(err) {
+    callback(config.DATABASE_URL);
     if (err && callback) {
       return callback(err);
     }
@@ -38,7 +39,7 @@ exports.runServer = runServer;
 var Item = require('./models/item');
 
 app.get('/items', function(req, res) {
-  Item.find(function(err, items) {
+  Item.find({}, function(err, items) {
     if (err) {
       return res.status(500).json({
         message: 'Internal Server Error'

@@ -14,7 +14,6 @@ var runServer = function(callback) {
         if (err && callback) {
             return callback(err);
         }
-
     app.listen(config.PORT, function() {
       console.log('Listening on localhost:' + config.PORT);
       if (callback) {
@@ -38,7 +37,7 @@ exports.runServer = runServer;
 var Item = require('./models/item');
 
 app.get('/items', function(req, res) {
-  Item.find({}, function(err, items) {
+  Item.find(function(err, items) {
     if (err) {
       return res.status(500).json({
         message: 'Internal Server Error'

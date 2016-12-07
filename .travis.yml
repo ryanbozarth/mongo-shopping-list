@@ -8,3 +8,9 @@ addons:
     - mongodb-3.2-precise
     packages:
     - mongodb-org-server
+deploy:
+  provider: heroku
+  api_key: d0fef4e4-e279-4b8c-824c-e327f1133fd6
+  app: secure-thicket-45870
+  on:
+    repo: ryanbozarth/mongo-shopping-list
